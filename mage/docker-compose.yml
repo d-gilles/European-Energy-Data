@@ -1,0 +1,20 @@
+version: '3'
+services:
+  magic:
+    image: mageai/mageai:latest
+    command: >
+      sh -c "curl -s https://raw.githubusercontent.com/d-gilles/energy_data_etl/main/startscript.sh | sh"
+    # mage start energy_data_etl
+    env_file:
+      - .env
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    environment:
+      USER_CODE_PATH: /home/src/${PROJECT_NAME}_temp
+      ENV: ${ENV}
+    ports:
+      - 6789:6789
+    # volumes:
+    #   - .:/home/src/
+    restart: on-failure:5

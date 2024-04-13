@@ -1,0 +1,9 @@
+pandas==2.2.2
+mage-ai[dbt]
+mage-ai[google-cloud-storage]
+mage-ai[postgres]
+mage-ai[redshift]
+mage-ai[s3]
+entsoe-py  # library for accessing ENTSO-E API
+pyarrow  # library for reading and writing Parquet files
+dask[dataframe]

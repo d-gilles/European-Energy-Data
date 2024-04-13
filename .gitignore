@@ -1,0 +1,6 @@
+notebooks/*
+aws-infra/.terraform/*
+aws-infra/.terraform.lock.hcl
+aws-infra/infra_details/*
+mage/.env
+energy_data_etl/
