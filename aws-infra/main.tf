@@ -40,7 +40,7 @@ data "template_file" "env_vars" {
   template = file("env_vars.json")
 
   vars = {
-    bucket_name           = var.bucket_name
+    bucket_name           = "${var.app_name}-${var.bucket_name}"
     aws_access_key_id     = var.AWS_ACCESS_KEY_ID
     aws_secret_access_key = var.AWS_SECRET_ACCESS_KEY
     aws_region_name       = var.aws_region
