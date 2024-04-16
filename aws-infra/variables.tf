@@ -20,7 +20,7 @@ variable "DATABASE_CONNECTION_URL" {
 
 variable "bucket_name" {
   type = string
-  default = "datalake-add-your-name" # Add your name here to have aunique bucket name
+  default = "datalake-lenico" # Add your name here to have aunique bucket name
 }
 
 variable "app_count" {
@@ -97,46 +97,28 @@ variable "private_subnets" {
 
 variable "availability_zones" {
   description = "List of availability zones"
-  default     = ["eu-central-1a", "eu-central-1b"]
+  default     = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
 }
 
-#####################################
-## Redshift Serverless - Variables ##
-#####################################
 
-variable "redshift_serverless_namespace_name" {
-  type        = string
-  description = "Redshift Serverless Namespace Name"
+## redshift
+
+variable "cluster_identifier" {
+  description = "name of the redshift cluster"
+  default = "tf-redshift-cluster"
 }
 
-variable "redshift_serverless_database_name" { 
-  type        = string
-  description = "Redshift Serverless Database Name"
+variable "database_name" {
+  description = "name of the redshift db"
+  default = "energy_dwh"
 }
 
-variable "redshift_serverless_admin_username" {
-  type        = string
-  description = "Redshift Serverless Admin Username"
+variable "db_master_user" {
+  description = "db master user"
+  default = "exampleuser"
 }
 
-variable "redshift_serverless_admin_password" { 
-  type        = string
-  description = "Redshift Serverless Admin Password"
-}
-
-variable "redshift_serverless_workgroup_name" {
-  type        = string
-  description = "Redshift Serverless Workgroup Name"
-}
-
-variable "redshift_serverless_base_capacity" {
-  type        = number
-  description = "Redshift Serverless Base Capacity"
-  default     = 32 // 32 RPUs to 512 RPUs in units of 8 (32,40,48...512)
-}
-
-variable "redshift_serverless_publicly_accessible" {
-  type        = bool
-  description = "Set the Redshift Serverless to be Publicly Accessible"
-  default     = false
+variable "db_master_pwd" {
+  description = "db master user"
+  default = "Mustbe8characters"
 }

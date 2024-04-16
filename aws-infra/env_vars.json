@@ -46,5 +46,21 @@
     {
         "name": "BUCKET_NAME",
         "value": "${bucket_name}"
+    },
+    {
+        "name": "CLUSTER_IDENTIFIER",
+        "value": "${cluster_identifier}"
+    },
+    {
+        "name": "DATABASE_NAME",
+        "value": "${database_name}"
+    },
+    {
+        "name": "DB_USER",
+        "value": "${master_username}"
+    },
+    {
+        "name": "DB_PWD",
+        "value": "${master_password}"
     }
 ]

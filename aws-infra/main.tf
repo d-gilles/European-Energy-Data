@@ -40,6 +40,11 @@ data "template_file" "env_vars" {
   template = file("env_vars.json")
 
   vars = {
+    redshift_endpoint     = "${aws_redshift_cluster.dwh.endpoint}"
+    cluster_identifier    = var.cluster_identifier
+    database_name         = var.database_name
+    master_username       = var.db_master_user
+    master_password       = var.db_master_pwd
     bucket_name           = "${var.app_name}-${var.bucket_name}"
     aws_access_key_id     = var.AWS_ACCESS_KEY_ID
     aws_secret_access_key = var.AWS_SECRET_ACCESS_KEY

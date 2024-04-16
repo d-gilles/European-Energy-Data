@@ -12,3 +12,4 @@ resource "local_file" "alb_dns_name_file" {
   filename = "${path.module}/infra_details/alb_dns_name.txt"
 }
 
+

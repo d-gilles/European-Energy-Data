@@ -1,6 +1,5 @@
 setup_aws:
 	cd ./aws-infra && \
-	pwd && \
 	terraform apply
 
 start_ui:
@@ -19,3 +18,7 @@ s3list:
 	# List the content of your S3 datalake
 	@bucket_name=$$(cat ./aws-infra/infra_details/bucketname.txt); \
 	aws s3 ls s3://"$$bucket_name"
+
+off:
+	cd ./aws-infra && \
+	terraform destroy
