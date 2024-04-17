@@ -3,5 +3,6 @@ aws-infra/.terraform/*
 aws-infra/.terraform.lock.hcl
 aws-infra/infra_details/*
 mage/.env
+mage/metadata.yaml
 energy_data_etl/
 terraform.tfstate
