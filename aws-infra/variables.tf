@@ -1,11 +1,11 @@
 variable "AWS_ACCESS_KEY_ID" {
   type    = string
-  default = "AKIAYS2NUNPN4B7JWOWF"
+  default = ""
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
   type    = string
-  default = "jpVPxFyaTGgXsuUOmiirJd+c1Zxc/HuAFZOc/u2d"
+  default = ""
 }
 
 variable "PROJECT_NAME" {
@@ -20,7 +20,7 @@ variable "DATABASE_CONNECTION_URL" {
 
 variable "bucket_name" {
   type = string
-  default = "datalake-lenico" # Add your name here to have aunique bucket name
+  default = "datalake-lenico"
 }
 
 variable "app_count" {
@@ -43,7 +43,7 @@ variable "aws_cloudwatch_retention_in_days" {
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "mageetl"
+  default     = "mageetl" 
 }
 
 variable "app_environment" {
@@ -77,12 +77,12 @@ variable "docker_image" {
 
 variable "ecs_task_cpu" {
   description = "ECS task cpu"
-  default     = 512
+  default     = 1024
 }
 
 variable "ecs_task_memory" {
   description = "ECS task memory"
-  default     = 1024
+  default     = 2048
 }
 
 variable "public_subnets" {
@@ -105,12 +105,12 @@ variable "availability_zones" {
 
 variable "cluster_identifier" {
   description = "name of the redshift cluster"
-  default = "tf-redshift-cluster"
+  default = "tf-redshift-cluster" 
 }
 
 variable "database_name" {
   description = "name of the redshift db"
-  default = "energy_dwh"
+  default = "energy_dwh"  
 }
 
 variable "db_master_user" {

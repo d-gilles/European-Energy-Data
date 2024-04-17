@@ -6,3 +6,6 @@ mage/.env
 mage/metadata.yaml
 energy_data_etl/
 terraform.tfstate
+aws-infra/.DS_Store
+mage/.DS_Store
+.DS_Store

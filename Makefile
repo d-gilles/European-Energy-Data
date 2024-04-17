@@ -1,3 +1,8 @@
+init
+	cd ./aws-infra && \
+	terraform init
+
+
 setup_aws:
 	cd ./aws-infra && \
 	terraform apply
