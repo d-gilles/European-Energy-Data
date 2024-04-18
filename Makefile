@@ -1,3 +1,4 @@
+.PHONY: export-credentials
 # initialize Terraform
 init:
 	cd ./aws-infra && \
@@ -22,6 +23,27 @@ check:
 		echo "Failed to access AWS. Check your AWS credentials."; \
 		exit 1; \
 	fi
+
+export-credentials:
+	@if [ -f ${HOME}/.aws/credentials ]; then \
+		echo "Die Datei ~/.aws/credentials existiert."; \
+		echo "Verfügbare Profile:"; \
+		aws configure list-profiles; \
+		echo "Möchten Sie eines dieser Profile verwenden, um AWS_ACCESS_KEY_ID und AWS_SECRET_ACCESS_KEY zu exportieren? [y/N]"; \
+		read answer; \
+		if [ "$$answer" = "y" ] || [ "$$answer" = "Y" ]; then \
+			echo "Geben Sie den Profilnamen ein:"; \
+			read profile; \
+			export AWS_ACCESS_KEY_ID=$$(aws configure get aws_access_key_id --profile $$profile); \
+			export AWS_SECRET_ACCESS_KEY=$$(aws configure get aws_secret_access_key --profile $$profile); \
+			echo "AWS_ACCESS_KEY_ID und AWS_SECRET_ACCESS_KEY wurden für das Profil $$profile exportiert."; \
+		else \
+			echo "Keine Credentials exportiert."; \
+		fi \
+	else \
+		echo "Die Datei ~/.aws/credentials existiert nicht."; \
+	fi
+
 
 # Spin up the infrastructure
 setup_aws:

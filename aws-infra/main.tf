@@ -41,6 +41,7 @@ data "template_file" "env_vars" {
 
   vars = {
     redshift_endpoint     = "${aws_redshift_cluster.dwh.endpoint}"
+    redshift_hostname     = "${split(":", aws_redshift_cluster.dwh.endpoint)[0]}"
     cluster_identifier    = var.cluster_identifier
     database_name         = var.database_name
     master_username       = var.db_master_user

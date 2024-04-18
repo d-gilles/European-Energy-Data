@@ -41,8 +41,55 @@ resource "aws_redshift_cluster" "dwh" {
   cluster_type       = "single-node"
   cluster_subnet_group_name = aws_redshift_subnet_group.redshift_subnet_group.name
   vpc_security_group_ids   = [aws_security_group.redshift_sg.id]
+  iam_roles          = [aws_iam_role.redshift_s3_access_role.arn]  
 }
 
-output "redshift_endpoint" {
-  value = aws_redshift_cluster.dwh.endpoint
+
+resource "aws_iam_role" "redshift_s3_access_role" {
+  name = "${var.app_name}-redshift-s3-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Principal = {
+          Service = "redshift.amazonaws.com"
+        },
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+
+  tags = {
+    Name        = "${var.app_name}-redshift-s3-role"
+    Environment = var.app_environment
+  }
+}
+
+resource "aws_iam_policy" "redshift_s3_policy" {
+  name        = "${var.app_name}-redshift-s3-policy"
+  description = "Policy that allows Redshift instances to access S3"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ],
+        Resource = [
+          "arn:aws:s3:::your-bucket-name",
+          "arn:aws:s3:::your-bucket-name/*"
+        ]
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "redshift_s3_policy_attachment" {
+  role       = aws_iam_role.redshift_s3_access_role.name
+  policy_arn = aws_iam_policy.redshift_s3_policy.arn
 }

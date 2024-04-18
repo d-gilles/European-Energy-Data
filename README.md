@@ -77,11 +77,20 @@ You can check if all dependencies are setup correctly befor proceeding.
 make check
 ```
 
-To set up the AWS infrastructure:
+If the check is fine you can now export your AWS credentials. They will be send to the AWS secrets manager on order to be accessabel from within the mage-UI to access AWS resources such as S3 and Redshift. Too do so just run:
+```
+export AWS_ACCESS_KEY_ID=$$(aws configure get aws_access_key_id --profile default)
+export AWS_SECRET_ACCESS_KEY=$$(aws configure get aws_secret_access_key --profile default)
+```
+If you want to use another profil than `default`just change it in the command.
+
+
+Set up the AWS infrastructure:
 
 ```
 make setup_aws
 ```
+The command will ask you for confirmation. Type "yes" to procced. 
 
 After setting up the infrastructure, you may need to wait a few minutes for the AWS components to initialize fully. Once ready, you can start the Mage UI in your browser:
 
@@ -103,7 +112,7 @@ make off
 
 ## **Pipeline Details**
 
-![System Architecture Diagram](img/pipeline.png)  
+![data pipeline](img/pipeline.png)  
 
 The data pipeline performs the following operations:
 
@@ -119,7 +128,10 @@ Two DTB models that perform the following:
 
 ## **Dashboard**
 
-The AWS QuickSight dashboard includes:
+The mix of energy sources year to date:
+![energy piechart](img/energy_mix.jpeg)  
 
-- A stacked line (area) chart of the last week's energy production, updated every 15 minutes.
-- A graph providing insights into energy trends. Suggestion: Compare fossil vs. renewable energy production over the last month.
+
+
+- energy production fossil vs renewable year to date:
+![energy piechart](img/fossil_vs_renewable.jpeg) 
