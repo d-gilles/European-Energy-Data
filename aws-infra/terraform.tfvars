@@ -4,7 +4,7 @@ app_name = "mageetl" # Change this to your application name
 aws_region = "eu-central-1" # Change this to your region
 
 # s3 data lake
-bucket_name = "datalake-lenico" # Change this to your bucket name
+bucket_name = "datalake-lenico_1" # Change this to your bucket name
 
 # redshift
 cluster_identifier = "tf-redshift-cluster"  # Change this to your cluster name
