@@ -101,7 +101,7 @@ make start_ui
 To list the contents of the S3 datalake:
 
 ```bash
-make s3list
+make s3list 
 ```
 
 To turn off all services and destroy the AWS setup:
@@ -135,3 +135,5 @@ The mix of energy sources year to date:
 
 - energy production fossil vs renewable year to date:
 ![energy piechart](img/fossil_vs_renewable.jpeg) 
+
+...
