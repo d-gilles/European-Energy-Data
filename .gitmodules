@@ -1,0 +1,3 @@
+[submodule "mage-pipeline"]
+	path = mage-pipeline
+	url = git@github.com:d-gilles/energy_data_etl.git

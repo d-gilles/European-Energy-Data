@@ -61,9 +61,10 @@ git clone https://github.com/d-gilles/energy_data_insides
 ```
 The actual mage pipeline files are stored in a separate git repo:
 ```
-git clone https://github.com/d-gilles/energy_data_etl
+https://github.com/d-gilles/energy_data_etl
 ```
 During the spin up of the container on aws, a start script will automatically load this pipeline and make it available in mage.
+The pipeline repo is intergaded to this repo as a submodul. 
 
 ## Configuration
 **Variables** can be modified in the **`aws-infra/terraform.tfvars`**.
