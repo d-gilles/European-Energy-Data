@@ -122,18 +122,20 @@ The data pipeline performs the following operations:
 4. **Data Transformation**
 
 ## Transformations
-Two DTB models that perform the following:
+Two SQL tranformers that perform the following:
 - Aggregates daily data into summary entries.
 - Separates energy production types into fossil and renewable categories, summarized daily.
 
 ## **Dashboard**
 
-The mix of energy sources year to date:
-![energy piechart](img/energy_mix.jpeg)  
-
+The mix of energy sources for 2023 total:
+![energy piechart](img/energy_mix_23.png)  
 
 
 - energy production fossil vs renewable year to date:
-![energy piechart](img/fossil_vs_renewable.jpeg) 
+![fossil vs renewable](img/fossil_vs_renewable.png) 
 
-...
+- energy mix for 2023 over time:
+![mix for 2023 over time](img/energy_mix_over_time.png) 
+
+
