@@ -24,31 +24,13 @@ check:
 		exit 1; \
 	fi
 
-export-credentials:
-	@if [ -f ${HOME}/.aws/credentials ]; then \
-		echo "Die Datei ~/.aws/credentials existiert."; \
-		echo "Verfügbare Profile:"; \
-		aws configure list-profiles; \
-		echo "Möchten Sie eines dieser Profile verwenden, um AWS_ACCESS_KEY_ID und AWS_SECRET_ACCESS_KEY zu exportieren? [y/N]"; \
-		read answer; \
-		if [ "$$answer" = "y" ] || [ "$$answer" = "Y" ]; then \
-			echo "Geben Sie den Profilnamen ein:"; \
-			read profile; \
-			export AWS_ACCESS_KEY_ID=$$(aws configure get aws_access_key_id --profile $$profile); \
-			export AWS_SECRET_ACCESS_KEY=$$(aws configure get aws_secret_access_key --profile $$profile); \
-			echo "AWS_ACCESS_KEY_ID und AWS_SECRET_ACCESS_KEY wurden für das Profil $$profile exportiert."; \
-		else \
-			echo "Keine Credentials exportiert."; \
-		fi \
-	else \
-		echo "Die Datei ~/.aws/credentials existiert nicht."; \
-	fi
 
 
 # Spin up the infrastructure
 setup_aws:
 	cd ./aws-infra && \
 	terraform apply
+
 
 start_ui:
 	# Open the mage ui in browser.
@@ -66,6 +48,15 @@ start_ui:
 	done; \
 	echo "URL is now accessible, opening in browser..."; \
 	open "$$url"  # Use 'xdg-open' on Linux
+
+	@echo "Opening Redshift UI from redshift_ui.txt..."
+	@url=$$(cat ./aws-infra/infra_details/redshift_ui.txt); \
+	if ! echo "$$url" | grep -q "^http://\|^https://"; then \
+		url="http://$$url"; \
+	fi; \
+	echo "Formatted URL: $$url"; \
+	open "$$url"  # Use 'xdg-open' on Linux
+
 
 
 s3list:

@@ -90,11 +90,12 @@ make setup_aws
 ```
 The command will ask you for confirmation. Type "yes" to procced. 
 
-After setting up the infrastructure, you may need to wait a few minutes for the AWS components to initialize fully. Once ready, you can start the Mage UI in your browser:
+After setting up the infrastructure, you may need to wait a few minutes for the AWS components to initialize fully. Once ready, you can start the Mage UI and the Redshift UI in your browser:
 
 ```bash
 make start_ui
 ```
+**! If the UI doesn't start and the script will not finish, break the running script (ctrl + C) and run `make setup_aws` once again.**
 
 To list the contents of the S3 datalake:
 
