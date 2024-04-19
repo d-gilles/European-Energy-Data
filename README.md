@@ -82,15 +82,7 @@ You can check if all dependencies are setup correctly befor proceeding.
 make check
 ```
 
-If the check is fine you can now export your AWS credentials. They will be send to the AWS secrets manager on order to be accessabel from within the mage-UI to access AWS resources such as S3 and Redshift. Too do so just run:
-```
-export AWS_ACCESS_KEY_ID=$$(aws configure get aws_access_key_id --profile default)
-export AWS_SECRET_ACCESS_KEY=$$(aws configure get aws_secret_access_key --profile default)
-```
-If you want to use another profil than `default`just change it in the command.
-
-
-Set up the AWS infrastructure:
+If the check is fine you can now set up the AWS infrastructure:
 
 ```
 make setup_aws
